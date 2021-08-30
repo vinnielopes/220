@@ -34,7 +34,7 @@ def coffee():
 
 def kilometers_to_miles():
     kilometer = eval(input("number of kilometers driven: "))
-    conversion_from_km_to_mi = kilometer * 1.61
+    conversion_from_km_to_mi = kilometer / 1.61
     print("number of miles driven =", conversion_from_km_to_mi)
 
 kilometers_to_miles()
