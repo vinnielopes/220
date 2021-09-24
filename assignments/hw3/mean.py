@@ -9,6 +9,7 @@ I certify that this assignment is entirely my own work
 """
 
 import math
+
 def main():
 
     # Insert numbers
@@ -17,7 +18,7 @@ def main():
     acc2 = 0
     acc3 = 1
 
-    for i in range(num):
+    for _ in range(num):
         inp = eval(input("Enter value: "))
         acc1 = acc1 + (inp**2)
         acc2 = acc2 + 1/inp
