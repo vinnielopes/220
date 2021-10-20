@@ -47,9 +47,12 @@ def main():
 
     # Storing the message
     message_list = []
-    keywordStr = input.getText()
+    keywordStr = input.getText().strip().upper()
     for i in range(len(keywordStr)):
-        message_list.append(keywordStr[i])
+        if keywordStr[i] == " ":
+            pass
+        else:
+            message_list.append(keywordStr[i])
     print(message_list)
 
     # Storing the code
@@ -66,7 +69,16 @@ def main():
 
     output_list = []
     for i in range(min(len(code_list),len(message_list))):
-        sum = chr(ord(message_list[i]) + code_list[i])
+        # rule = ord(message_list[i]) + code_list[i]
+        # if rule > 122:
+        #     rule = rule - 25
+        # sum = chr(rule)
+        # output_list.append(sum)
+        if ord(message_list[i]) + code_list[i] < 122:
+            rule = ord(message_list[i]) + code_list[i]
+        if ord(message_list[i]) + code_list[i] >= 122:
+            rule = ord(message_list[i]) + code_list[i] - 26
+        sum = chr(rule)
         output_list.append(sum)
 
     print(output_list)
@@ -85,9 +97,12 @@ def main():
 def code(message, keyword):
     # Storing the message
     message_list = []
-    keywordStr = message
+    keywordStr = message.strip().upper()
     for i in range(len(keywordStr)):
-        message_list.append(keywordStr[i])
+        if keywordStr[i] == " ":
+            pass
+        else:
+            message_list.append(keywordStr[i])
     print(message_list)
 
     # Storing the code
@@ -102,11 +117,14 @@ def code(message, keyword):
 
     output_list = []
     for i in range(min(len(code_list), len(message_list))):
-        sum = chr(ord(message_list[i]) + code_list[i])
+        if ord(message_list[i]) + code_list[i] < 122:
+            rule = ord(message_list[i]) + code_list[i]
+        if ord(message_list[i]) + code_list[i] >= 122:
+            rule = ord(message_list[i]) + code_list[i] - 26
+        sum = chr(rule)
         output_list.append(sum)
 
     return "".join(output_list)
-
 
 if __name__ == '__main__':
     main()
