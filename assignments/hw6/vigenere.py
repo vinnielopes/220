@@ -47,23 +47,20 @@ def main():
 
     # Storing the message
     message_list = []
-    keywordStr = input.getText().strip().upper()
-    for i in range(len(keywordStr)):
-        if keywordStr[i] == " ":
-            pass
-        else:
-            message_list.append(keywordStr[i])
+    keywordStr = input.getText().replace(" ", "").upper()
+    for letter in keywordStr:
+            message_list.append(letter)
     print(message_list)
 
     # Storing the code
     code_list = []
     codeStr = input_code.getText()
     for i in range(len(codeStr)):
-        code_list.append(ord(codeStr[i])-97)
+        code_list.append(ord(codeStr[i])-65)
 
     while len(keywordStr) - len(code_list) > 0:
         for i in range(len(codeStr)):
-            code_list.append(ord(codeStr[i]) - 97)
+            code_list.append(ord(codeStr[i]) - 65)
 
     print(code_list)
 
