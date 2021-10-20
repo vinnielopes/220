@@ -54,7 +54,7 @@ def main():
 
     # Storing the code
     code_list = []
-    codeStr = input_code.getText()
+    codeStr = input_code.getText().upper()
     for i in range(len(codeStr)):
         code_list.append(ord(codeStr[i])-65)
 
@@ -66,17 +66,10 @@ def main():
 
     output_list = []
     for i in range(min(len(code_list),len(message_list))):
-        # rule = ord(message_list[i]) + code_list[i]
-        # if rule > 122:
-        #     rule = rule - 25
-        # sum = chr(rule)
-        # output_list.append(sum)
-        if ord(message_list[i]) + code_list[i] < 122:
-            rule = ord(message_list[i]) + code_list[i]
-        if ord(message_list[i]) + code_list[i] >= 122:
-            rule = ord(message_list[i]) + code_list[i] - 26
-        sum = chr(rule)
-        output_list.append(sum)
+        l = ord(message_list[i]) - 65
+        enc = l + code_list[i]
+        enc = enc % 26
+        output_list.append(chr(enc + 65))
 
     print(output_list)
 
@@ -94,32 +87,26 @@ def main():
 def code(message, keyword):
     # Storing the message
     message_list = []
-    keywordStr = message.strip().upper()
-    for i in range(len(keywordStr)):
-        if keywordStr[i] == " ":
-            pass
-        else:
-            message_list.append(keywordStr[i])
-    print(message_list)
+    keywordStr = message.replace(" ", "").upper()
+    for letter in keywordStr:
+        message_list.append(letter)
 
     # Storing the code
     code_list = []
-    codeStr = keyword
+    codeStr = keyword.upper()
     for i in range(len(codeStr)):
-        code_list.append(ord(codeStr[i]) - 97)
+        code_list.append(ord(codeStr[i]) - 65)
 
     while len(keywordStr) - len(code_list) > 0:
         for i in range(len(codeStr)):
-            code_list.append(ord(codeStr[i]) - 97)
+            code_list.append(ord(codeStr[i]) - 65)
 
     output_list = []
     for i in range(min(len(code_list), len(message_list))):
-        if ord(message_list[i]) + code_list[i] < 122:
-            rule = ord(message_list[i]) + code_list[i]
-        if ord(message_list[i]) + code_list[i] >= 122:
-            rule = ord(message_list[i]) + code_list[i] - 26
-        sum = chr(rule)
-        output_list.append(sum)
+        l = ord(message_list[i]) - 65
+        enc = l + code_list[i]
+        enc = enc % 26
+        output_list.append(chr(enc + 65))
 
     return "".join(output_list)
 
