@@ -11,8 +11,8 @@ I certify that this assignment is entirely my own work
 def weighted_average(in_file_name, out_file_name):
     grades = open(in_file_name, 'r')
     count = len(open(in_file_name).readlines())
-
     average = open(out_file_name, 'w')
+
     error = 0
     acc = 0
     for lines in grades:
@@ -21,6 +21,7 @@ def weighted_average(in_file_name, out_file_name):
         name_grades = lines.strip("\n",).split(":")
         name = name_grades[0]
         grades = name_grades[1].strip().split()
+
         for i in range(0, len(grades), 2):
             number = eval(grades[i]) * eval(grades[i + 1])
             sum = sum + number
