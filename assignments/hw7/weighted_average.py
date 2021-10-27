@@ -39,7 +39,7 @@ def weighted_average(in_file_name, out_file_name):
         if total_w > 100:
             average.write(name + "'s average: Error: The weights are more than 100.\n")
             error = error + 1
-        else:
+        if total_w == 100:
             average.write(name + "'s average: " + str(round(weighted_average, 1)) + "\n")
     average.write("Class average: " + str(round((acc/(count-error)), 1)) + "\n")
 
