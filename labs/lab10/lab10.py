@@ -62,6 +62,8 @@ def play_Game():
         else:
             print("That is not a legal move! Try again!")
         display_board(board)
+        if turnCount == 9:
+            break
 
     if game_won(board) == "X wins":
         print("Player x wins!")
